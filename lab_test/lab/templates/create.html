@@ -11,11 +11,36 @@
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        Имя: <input type="text" name="first_name"><br><br>
-        Фамилия: <input type="text" name="last_name"><br><br>
-        Возраст: <input type="number" name="age"><br><br>
-        Группа: <input type="text" name="group"><br><br>
-        Фото: <input type="file" name="photo"><br><br>
+        
+        <label>Имя:</label>
+        <input type="text" name="first_name" required><br><br>
+
+        <label>Фамилия:</label>
+        <input type="text" name="last_name" required><br><br>
+
+        <label>Возраст:</label>
+        <input type="number" name="age" required><br><br>
+
+        <label>Группа:</label>
+        <select name="group" required>
+            <option value="">-- Выберите группу --</option>
+            {% for group in groups %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Клубы (можно выбрать несколько):</label><br>
+        <select name="clubs" multiple size="5">
+            {% for club in clubs %}
+                <option value="{{ club.id }}">{{ club.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label>Фото:</label>
+        <input type="file" name="photo"><br><br>
+
         <button type="submit">Сохранить</button>
     </form>
 

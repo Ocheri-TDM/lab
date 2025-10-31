@@ -71,3 +71,102 @@ body {
     text-decoration: none;
     color: #1e40af;
 }
+
+
+
+ .student-detail {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .student-detail:hover {
+            transform: scale(1.01);
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            font-size: 26px;
+            color: #333;
+        }
+
+        .mphoto {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #4e73df;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 17px;
+            color: #444;
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #222;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #e9f0ff;
+            color: #2e59d9;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin: 5px 0;
+            display: inline-block;
+        }
+
+        .actions {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4e73df;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 5px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #375acb;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #555e65;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .student-detail {
+                padding: 20px;
+            }
+
+            .mphoto {
+                width: 140px;
+                height: 140px;
+            }
+        }

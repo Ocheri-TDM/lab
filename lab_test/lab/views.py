@@ -21,42 +21,47 @@ def main(request):
 from .forms import StudentForm
 
 
-# def create_club(request):
-#     if request.method == "POST":
-#         name = request.POST.get("name")
-#         curator = request.POST.get("curator")
-
-#         Club.objects.create(
-#             name=name,
-#             curator=curator
-#         )
-#         return redirect("main")
-#     return render(request, './create.html')
-
 
 
 
 def create_student(request):
+    groups = Group.objects.all()
+    clubs = Club.objects.all()
+
     if request.method == "POST":
         first_name = request.POST.get("first_name")
         last_name = request.POST.get("last_name")
         age = request.POST.get("age")
-        group = request.POST.get("group")
-        photo = request.FILES.get("photo")
 
-        Student.objects.create(
+        group_id = request.POST.get("group")
+        photo = request.FILES.get("photo")
+        selected_clubs = request.POST.getlist("clubs")
+
+        # Проверяем, выбрана ли группа
+        if group_id:
+            group = Group.objects.get(id=group_id)
+        else:
+            group = None
+
+        student = Student.objects.create(
             first_name=first_name,
             last_name=last_name,
             age=age,
             group=group,
             photo=photo
         )
+
+        # Добавляем клубы, если есть
+        if selected_clubs:
+            student.clubs.set(selected_clubs)
+
         return redirect("main")
-    return render(request, './create.html')
+
+    return render(request, "create.html", {"groups": groups, "clubs": clubs})
 
 def student_detail(request, pk):
     student = get_object_or_404(Student, pk=pk)
-    return render(request, "./detail.html", {"student": student})
+    return render(request, "detail.html", {"student": student})
 
 def edit_student(request, pk):
     student = get_object_or_404(Student, pk=pk)

@@ -20,7 +20,9 @@ class Student(models.Model):
     age = models.IntegerField()
     clubs = models.ManyToManyField(Club, blank=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='students_photos/', blank=True, null=True)
 
+    
     class Meta:
         verbose_name = "Student"
         verbose_name_plural = "Students"
