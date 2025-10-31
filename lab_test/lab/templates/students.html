@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Students</title>
+</head>
+<body>
+    <h1 class="title">Список студентов</h1>
+    <ul class="students-list">
+       {% for student in students %}
+<li class="student-card">
+    <div class="m">
+        {% if student.photo %}
+            <img src="{{ student.photo.url }}" class="mphoto" alt="Фото студента">
+        {% else %}
+            <p>Фото нет</p>
+        {% endif %}
+    </div>
+    <div class="n">
+        <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+        <p>Группа: <span>{{ student.group }}</span></p>
+
+        {% if student.clubs.all %}
+            <p>Клубы:</p>
+            <ul>
+                {% for club in student.clubs.all %}
+                    <li>{{ club.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <a href="{% url 'student_detail' student.id %}">Подробнее</a> |
+        <a href="{% url 'edit_student' student.id %}">Редактировать</a> |
+        <a href="{% url 'delete_student' student.id %}">Удалить</a>
+    </div>
+</li>
+{% endfor %}
+
+        
+    </ul>
+    <div class="add-student">
+        <a href="{% url 'create_student' %}">Добавить студента</a>
+    </div>
+</body>
+</html>

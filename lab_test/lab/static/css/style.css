@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient(135deg, #f0f4ff, #dbeafe);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px #cbd5e1;
+}
+
+.students-list {
+    display: grid;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-column: auto;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.student-card {
+    display: flex;
+    background: #fff;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.student-card h2 {
+    margin: 0 0 10px;
+    font-size: 26px;
+    color: #1e40af;
+}
+
+.student-card p {
+    margin: 0;
+    font-size: 16px;
+    color: #4b5563;
+}
+
+.student-card span {
+    font-weight: bold;
+    color: #1d4ed8;
+}
+
+
+.m {
+    display : flex;
+    align-items: center;
+}
+
+.mphoto {
+    width: 80px;
+    height: 80px;
+}
+.n a {
+    text-decoration: none;
+    color: #1e40af;
+}

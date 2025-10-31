@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить студента</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Добавить студента</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        Имя: <input type="text" name="first_name"><br><br>
+        Фамилия: <input type="text" name="last_name"><br><br>
+        Возраст: <input type="number" name="age"><br><br>
+        Группа: <input type="text" name="group"><br><br>
+        Фото: <input type="file" name="photo"><br><br>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="{% url 'main' %}">Назад к списку</a>
+</body>
+</html>
